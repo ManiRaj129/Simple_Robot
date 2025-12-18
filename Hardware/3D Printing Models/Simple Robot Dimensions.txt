@@ -1,0 +1,15 @@
+FRONT
+height 243.00mm, 9.56 in
+length 47.08mm, -41.72, 88.8mm, 3.50 in
+width 166.72, -37.87, 204.59mm, 8.05 in
+
+MIDDLE
+height -74.55, 35.26, 109.81mm, 4.32 in
+width 7.97, -187.95, 195.92mm, 7.71 in
+length 46.19, 250.83, 204.64mm, 8.06 in
+
+BASE
+height 4.88, 29.93, 25.05mm, 0.99 in
+width -41.81, 162.83, 204.64mm, 8.06 in
+length -33.77, 235.88, 269.65mm, 10.62 in
+

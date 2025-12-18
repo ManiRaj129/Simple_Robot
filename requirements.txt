@@ -1,0 +1,21 @@
+# ===== Robot Voice I/O (STT + TTS) requirements =====
+numpy>=1.23
+sounddevice>=0.4.6
+webrtcvad>=2.0.10
+PyYAML>=6.0.1
+loguru>=0.7.2
+
+# Speech-to-Text
+faster-whisper>=1.0.0
+ctranslate2>=4.3.0
+huggingface-hub>=0.23
+
+openwakeword>=0.6.0
+
+soundfile>=0.12.1
+
+--find-links https://download.pytorch.org/whl/cpu
+torch==2.5.1 ; platform_system == "Windows" and platform_machine == "AMD64"
+
+torch ; platform_system == "Linux"
+# ===========================================================

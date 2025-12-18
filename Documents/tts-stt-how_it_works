@@ -1,0 +1,49 @@
+Tool/Package Descriptions: 
+
+Whisper -> Interprets your speech, converts into text
+
+Piper   -> use an ML model file (.onnx) to convert text to robot voice
+           -to change the voice we can use a different model
+
+
+Aspects of our Piper model right now: 
+    Right now we use: en_US-lessac-medium.onnx
+
+    en_US → language (English, US accent)
+    lessac → voice identity (style of the robot speaker)
+    medium → size/quality tier (speed/CPU vs naturalness in speach trade-off)
+
+
+    Model: en_US-lessac-medium → English (US), “Lessac” voice, medium size
+    Effect: Good balance of naturalness vs speed on CPU; outputs ~22.05 kHz mono WAV.
+
+If, in the future, we have spare CPU resources, and we want a less robotic speaker, we can find a model with a better size/quality tier.
+
+
+Example flow (Scenario 1: Robot repeat what you say):
+
+Flow: You speak ──► (A) Record mic ──► (B) Transcribe ──► (C) Synthesize voice ──► (D) Play audio ──► [You hear reply]
+
+A) Record mic (create WAV)
+    Python packages: sounddevice, soundfile, numpy
+    Sample code: record() in quick_voice_test.py
+    What happens: we open the input device specified in config.yaml, capture ~4 seconds , then write a temp WAV
+
+B) Transcribe speech → text (STT)
+    Python package: faster-whisper
+    Sample code: whisper_transcribe() in quick_voice_test.py
+    What happens: the WAV is fed to the Whisper model; it runs and decodes your English
+
+C) Synthesize text → speech (TTS)
+    Executable: tools/piper/piper.exe
+    DLLs Piper uses (from tools/piper/):
+        onnxruntime*.dll → runs the neural net (loads the .onnx)
+        espeak-ng.dll + espeak-ng-data\ → phonemizer (turns text/words into phonemes)
+        piper_phonemize.dll → glue for phonemization
+
+        (a phoneme is a small unit of sound in a language, our model breaks our text/input into phonemes)
+    Script code: piper_tts_to_file() in quick_voice_test.py
+    What happens: Piper loads the TTS neural network that generates the voice audio, then stores it as a temporary .WAV.
+
+D) Play the audio
+    we use tools/ffmpeg/ffplay.exe part of the ffmpeg to play your audio, windows/your machine routes to your output defined in config.yaml.

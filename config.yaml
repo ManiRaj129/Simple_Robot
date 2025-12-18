@@ -1,0 +1,16 @@
+audio:
+  input_device: 41
+  output_device: 8
+  samplerate: 44100
+
+exec:
+  piper_path: "./tools/piper/piper.exe"
+  ffmpeg_path: "./tools/ffmpeg/ffmpeg.exe"
+
+tts:
+  voice_model: "./tools/piper/models/en_US-lessac-medium.onnx"
+  
+stt:
+  model_size: "base.en"
+  compute_type: "int8"
+  device: "cpu"
