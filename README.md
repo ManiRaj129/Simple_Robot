@@ -2,11 +2,15 @@
 
 ## Environment SetUp (the following setup is for Linux OS)
 
+- **Connecting RaspberryPi to wifi or hotspot**
+  ```
+  sudo nmcli dev wifi connect "[NAME]" password "[PASSWORD]" ifname wlan0
+  ```
 - **Python**:
   Command:
   `bash
-     sudo apt install python3 python3-pip -y
-     `
+   sudo apt install python3 python3-pip -y
+   `
 - **Python packages**
 
   1. RPI.GPIO (by default installed on raspberryPI)
@@ -98,38 +102,40 @@
 
 - **AI models**:
   **Speech-to-Text (STT)**
-   - **Cloud**: OpenAI Whisper (whisper-1) — Very high quality, handles accents and background noise. 1-3 seconds response time. ~33 queries per 1 cent (basically free).
-     ```
-     pip install openai
-     export OPENAI_API_KEY="your-openai-api-key"
-     ```
-   - **Local**: faster-whisper base.en — Fair quality, but slow. 5-10 seconds response time. Free.
-     ```
-     pip install faster-whisper
-     ```
 
-   **Text-to-Speech (TTS)**
-   - **Cloud**: OpenAI TTS (gpt-4o-mini-tts) — Natural, human-like. 1-2 seconds response time. ~44 queries per 1 cent (basically free).
-     ```
-     pip install openai
-     export OPENAI_API_KEY="your-openai-api-key"
-     ```
-   - **Local**: Piper lessac-medium — Clear but robotic, can't pronounce certain phrases. 2-4 seconds response time. Free.
-     ```
-     pip install piper-tts
-     ```
+  - **Cloud**: OpenAI Whisper (whisper-1) — Very high quality, handles accents and background noise. 1-3 seconds response time. ~33 queries per 1 cent (basically free).
+    ```
+    pip install openai
+    export OPENAI_API_KEY="your-openai-api-key"
+    ```
+  - **Local**: faster-whisper base.en — Fair quality, but slow. 5-10 seconds response time. Free.
+    ```
+    pip install faster-whisper
+    ```
 
-   **Large Language Model (LLM)**
-   - Cloud: Groq (llama-3.3-70b-versatile) — 70 Billion parameters. < 1 second response time. Free.
-     ```
-     pip install groq
-     export GROQ_API_KEY="your-groq-api-key"
-     ```
-   - **Local**: TinyLlama — 1.1 Billion parameters. 10 seconds response time. Free.
-     ```
-     pip install llama-cpp-python
-     ```
+  **Text-to-Speech (TTS)**
 
-     Edit config.py to switch between local/cloud compute.
+  - **Cloud**: OpenAI TTS (gpt-4o-mini-tts) — Natural, human-like. 1-2 seconds response time. ~44 queries per 1 cent (basically free).
+    ```
+    pip install openai
+    export OPENAI_API_KEY="your-openai-api-key"
+    ```
+  - **Local**: Piper lessac-medium — Clear but robotic, can't pronounce certain phrases. 2-4 seconds response time. Free.
+    ```
+    pip install piper-tts
+    ```
 
+  **Large Language Model (LLM)**
 
+  - Cloud: Groq (llama-3.3-70b-versatile) — 70 Billion parameters. < 1 second response time. Free.
+    ```
+    pip install groq
+    export GROQ_API_KEY="your-groq-api-key"
+    ```
+  - **Local**: TinyLlama — 1.1 Billion parameters. 10 seconds response time. Free.
+
+    ```
+    pip install llama-cpp-python
+    ```
+
+    Edit config.py to switch between local/cloud compute.
